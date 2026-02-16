@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://rudra-build.github.io/india-to-us-gpa-calculator/sitemap.xml
