@@ -1,0 +1,180 @@
+/* Hi guys!!!! I'm Rudra, Thanks for Reading this 
+Please note that i have taken the help of AI to Structure and make this code more readable. That being said the idea and the code is all mine.*/
+
+body {
+  font-family: Arial, sans-serif;
+  background: #f4f6f9;
+  margin: 0;
+  padding: 0;
+  color: #111;
+}
+
+.container {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 0 16px;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 18px;
+}
+
+h1 {
+  margin: 0 0 10px 0;
+}
+
+.sub {
+  margin: 0 auto;
+  max-width: 760px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 18px;
+  margin: 14px 0;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+label {
+  display: block;
+  margin-top: 12px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+input, select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #d7dce3;
+  background: #fff;
+  font-size: 16px;
+}
+
+button {
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px;
+  border: 0;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 700;
+  background: #111;
+  color: #fff;
+}
+
+button:hover { opacity: 0.92; }
+
+.secondary {
+  background: #fff;
+  color: #111;
+  border: 1px solid #d7dce3;
+}
+
+.secondary:hover {
+  background: #f2f4f7;
+  opacity: 1;
+}
+
+.result {
+  margin-top: 14px;
+  padding: 12px;
+  border-radius: 10px;
+  background: #f7f8fa;
+  border: 1px solid #e6e9ef;
+}
+
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Tabs */
+.tabs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.tab {
+  background: #fff;
+  color: #111;
+  border: 1px solid #d7dce3;
+  margin-top: 0;
+}
+
+.tab.active {
+  background: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.panel { margin-top: 8px; }
+.hidden { display: none; }
+
+.hint {
+  margin: 8px 0 0;
+  color: #555;
+  font-size: 14px;
+}
+
+.minihead {
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 16px;
+}
+
+/* Checkbox */
+.checks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.check {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border: 1px solid #e6e9ef;
+  border-radius: 10px;
+  background: #fafbfc;
+  font-weight: 600;
+}
+
+.check input {
+  width: auto;
+  margin: 0;
+}
+
+/* small divices (phone)
+
+
+*/
+@media (max-width: 720px) {
+  .checks { grid-template-columns: 1fr; }
+  .actions, .tabs { grid-template-columns: 1fr; }
+}
+
+.footer {
+  text-align: center;
+  color: #666;
+  margin: 18px 0 30px;
+}
+
+#ImpNotes >ul>li{
+    margin: 10px;
+}
+
+#FAQ > p{
+    margin-bottom: 30px;
+}

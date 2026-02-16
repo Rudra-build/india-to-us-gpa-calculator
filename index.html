@@ -1,0 +1,253 @@
+  <!-- Hi guys!!!! I'm Rudra, Thanks for Reading this
+Please note that i have taken the help of AI to Structure and make this code more readable. That being said the idea and the code is all mine.  -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Is My UK Grade Good Enough for MS CS in the USA?</title>
+  <meta name="description" content="Estimate your US GPA from a UK grade and get an MS CS competitiveness score plus next-step recommendations. Built for UK students applying to US Master's programs." />
+  <link rel="canonical" href="https://rudra-build.github.io/uk-grade-mscs-usa/" />
+
+  <meta property="og:title" content="Is My UK Grade Good Enough for MS CS in the USA?">
+  <meta property="og:description" content="Estimate your US GPA from a UK grade and get an MS CS competitiveness score + next-step tips.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://rudra-build.github.io/uk-grade-mscs-usa/">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- FAQ  -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": 
+    [
+      {
+        "@type": "Question",
+        "name": "Is a UK 2:1 good enough for MS CS in the USA?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Often yes. A strong 2:1 can be competitive for many MS CS programs, especially with strong projects, internships, and a focused statement of purpose. For top tiers, stronger academics and/or research help."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Is 68% a good grade for MS CS in the USA?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "68% is typically a high 2:1 in the UK and is viewed positively by many programs. Competitiveness depends on the university tier and the strength of your technical experience (projects, internships, research)."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Do US universities convert UK grades to a US GPA?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Some convert internally, some use credential evaluators, and some assess transcripts holistically. There is no single official conversion standard used by every university."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Do MS CS programs care more about CS module grades or overall grades?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "For MS CS, grades in Computer Science and mathematics modules often carry extra weight, but overall performance still matters."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Is a First Class always a 4.0 GPA?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Not always. Many conversions treat 70%+ as 4.0, but universities may evaluate your transcript differently based on module difficulty, grading standards, and overall context."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "If I’m below the typical GPA range, can I still get in?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Yes, sometimes. Strong evidence of ability beyond grades—internships, research, strong projects, and strong recommendations—can help offset a slightly lower GPA."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Do US MS CS programs require GRE?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Requirements vary by university and can change over time. Many programs are test-optional, but a strong score can still help in some cases."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Does work experience matter for MS CS admissions?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Yes. Relevant internships or work experience can signal readiness for applied coursework and can strengthen your application, especially when combined with strong projects."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "What should I focus on besides grades?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "Projects with clear technical depth, internships, research exposure, strong SOP, and strong recommendation letters are common differentiators for MS CS applicants."
+            }
+      },
+
+      {
+        "@type": "Question",
+        "name": "Is this tool an official GPA conversion?",
+        "acceptedAnswer": 
+            {
+            "@type": "Answer",
+            "text": "No. This tool provides an approximate estimate and a competitiveness score for guidance. Universities may use different evaluation methods."
+            }
+      }
+    ]
+  }
+  </script>
+
+</head>
+<body>
+    <div class="container">
+    
+    <header>
+      <h1>Is My UK Grade Good Enough for MS CS in the USA?</h1>
+      <p class="sub">
+        Built for UK Computer Science students applying to US Master’s programs.
+        Estimate your US GPA and get a <strong>Competitiveness Score</strong> plus the next steps to improve your profile.
+      </p>
+    </header>
+
+    <section class="card">
+      <h2>Calculator</h2>
+
+      <!-- Toggle Tabs -->
+      <div class="tabs" role="tablist" aria-label="Choose input type">
+        <button class="tab active" id="tabPercent" type="button" role="tab" aria-selected="true">UK Percentage</button>
+        <button class="tab" id="tabClass" type="button" role="tab" aria-selected="false">UK Classification</button>
+      </div>
+
+      <!-- Percentage Panel -->
+      <div class="panel" id="panelPercent" role="tabpanel" aria-labelledby="tabPercent">
+        <label for="ukGrade">UK Percentage</label>
+        <input type="number" id="ukGrade" placeholder="e.g. 65" min="0" max="100" />
+        <p class="hint">Tip: If you only know your classification, switch tabs.</p>
+      </div>
+
+      <!-- Classification Panel -->
+      <div class="panel hidden" id="panelClass" role="tabpanel" aria-labelledby="tabClass">
+        <label for="ukClass">UK Classification</label>
+        <select id="ukClass">
+          <option value="">Select</option>
+          <option value="first">First Class (70%+)</option>
+          <option value="twoone">Upper Second / 2:1 (60–69%)</option>
+          <option value="twotwo">Lower Second / 2:2 (50–59%)</option>
+          <option value="third">Third (40–49%)</option>
+        </select>
+        <p class="hint">We use a reasonable midpoint estimate if you don’t enter a percentage.</p>
+      </div>
+
+      <label for="tier">Target University Tier</label>
+      <select id="tier">
+        <option value="10">Top 10</option>
+        <option value="25">Top 25</option>
+        <option value="50">Top 50</option>
+      </select>
+
+      <h3 class="minihead">Profile Strength (tick what applies)</h3>
+      <div class="checks" role="group" aria-label="Profile factors">
+        <label class="check"><input type="checkbox" value="projects" /> Strong projects (GitHub/portfolio)</label>
+        <label class="check"><input type="checkbox" value="internship" /> Internship / work experience</label>
+        <label class="check"><input type="checkbox" value="research" /> Research experience</label>
+        <label class="check"><input type="checkbox" value="publication" /> Publication / poster / conference</label>
+        <label class="check"><input type="checkbox" value="leadership" /> Leadership (societies/SGA etc.)</label>
+        <label class="check"><input type="checkbox" value="awards" /> Awards / scholarships / competitions</label>
+        <label class="check"><input type="checkbox" value="sop" /> Strong SOP narrative (clear goals)</label>
+        <label class="check"><input type="checkbox" value="lor" /> Strong recommendation letters</label>
+        <label class="check"><input type="checkbox" value="gre" /> Strong GRE (if required/optional)</label>
+      </div>
+
+      <button id="btn">Analyse</button>
+
+      <div id="result" class="result" aria-live="polite"></div>
+
+      <div class="actions">
+        <button id="copyBtn" class="secondary" type="button">Copy result</button>
+        <button id="shareBtn" class="secondary" type="button">Share page</button>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>What this tool is (and isn’t)</h2>
+      <p>
+        This tool provides 
+        <ol>
+            <li>An approximate UK→US GPA estimate </li> 
+            <li>A <strong>Competitiveness Score</strong>.</li>
+        </ol>
+        The score is <strong>not</strong> an official “acceptance probability”. It is a practical indicator based on typical expectations for MS CS tiers plus your selected profile strengths.
+      </p>
+    </section>
+
+    <section class="card" id="FAQ">
+      <h2>FAQ</h2>
+
+      <h3>Is a UK 2:1 good enough for MS CS in the USA?</h3>
+      <p>Often yes. For top tiers, strong research/projects and strong letters can matter a lot.</p>
+
+      <h3>Is 68% a good grade for MS CS in the USA?</h3>
+      <p>68% is usually a high 2:1 and is viewed positively by many programs.</p>
+
+      <h3>Do US universities convert UK grades to a GPA?</h3>
+      <p>Some convert internally, some use credential evaluators, and some assess holistically.</p>
+
+      <h3>Do MS CS programs care more about CS module grades or overall grades?</h3>
+      <p>CS + maths module performance often matters more, but overall performance still matters.</p>
+
+      <h3>Can projects and internships offset a slightly lower GPA?</h3>
+      <p>Sometimes yes. Strong proof of ability can improve competitiveness.</p>
+
+      <h3>Is this an official conversion?</h3>
+      <p>No, it’s a guide. Always check each university’s evaluation approach.</p>
+    </section>
+
+    <section class="card" id="ImpNotes">sec
+      <h2>Important notes (read this)</h2>
+      <ul>
+        <li><strong>Estimates only:</strong> Different universities use different evaluation methods; there is no universal UK→US GPA rule.</li>
+        <li><strong>Holistic admissions:</strong> GPA is one component. Projects, internships, research, SOP, and LORs matter a lot for MS CS.</li>
+        <li><strong>Tier is a simplification:</strong> “Top 10/25/50” is for guidance; each school has its own expectations.</li>
+        <li><strong>No guarantees:</strong> This tool does not predict accept/reject outcomes.</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      <p>Free tool for UK CS students applying to US Master's programs.</p>
+    </footer>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
