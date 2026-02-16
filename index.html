@@ -1,0 +1,466 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <title>India to US GPA Converter (4.0 Scale) + Master's Application Readiness Tool</title>
+  <meta name="description" content="Convert Indian percentage or CGPA (out of 10) to an estimated US GPA (4.0 scale). Includes a field-specific master's application readiness check and curated next steps." />
+  <meta name="robots" content="index,follow" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container">
+
+    <header class="header">
+      <div class="brand">
+        <div>
+          <h1>India → US GPA Converter</h1>
+          <p class="sub">
+            Convert Indian <strong>percentage</strong> or <strong>CGPA (out of 10)</strong>
+            into an estimated US GPA (4.0 scale).
+            Then run a <strong>field specific readiness check</strong> with curated next steps.
+          </p>
+
+            <nav class="topNav" aria-label="On-page navigation">
+            <a href="#Calculator">Calculator</a>
+            <a href="#Results">Results</a>
+            <a href="#FAQ">FAQ</a>
+            <a href="#ImpNotes">Notes</a>
+
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <main>
+
+      <!-- ===================== CALCULATOR ===================== -->
+
+      <section class="card" aria-labelledby="calc-title" id="Calculator">
+
+        <h2 id="calc-title">Calculator</h2>
+
+        <div class="tabs" role="tablist" aria-label="Input mode">
+
+          <button
+            class="tab active"
+            id="tabPercent"
+            type="button"
+            role="tab"
+            aria-selected="true"
+            aria-controls="panelPercent">
+            Percentage
+          </button>
+
+          <button
+            class="tab"
+            id="tabCgpa"
+            type="button"
+            role="tab"
+            aria-selected="false"
+            aria-controls="panelCgpa">
+            CGPA (out of 10)
+          </button>
+
+        </div>
+
+        <div
+          class="panel"
+          id="panelPercent"
+          role="tabpanel"
+          aria-labelledby="tabPercent">
+
+          <label for="percentInput">Indian Percentage (0 to 100)</label>
+
+          <input
+            id="percentInput"
+            inputmode="decimal"
+            autocomplete="off"
+            placeholder="e.g., 72.5" />
+
+          <p class="hint">
+            Decimals are fine. You can also type
+            <span class="mono">72.5</span>.
+          </p>
+
+        </div>
+
+        <div
+          class="panel hidden"
+          id="panelCgpa"
+          role="tabpanel"
+          aria-labelledby="tabCgpa">
+
+          <label for="cgpaInput">CGPA (0 to 10)</label>
+
+          <input
+            id="cgpaInput"
+            inputmode="decimal"
+            autocomplete="off"
+            placeholder="e.g., 8.2" />
+
+          <p class="hint">
+            This assumes your CGPA is on a 10 point scale.
+          </p>
+
+        </div>
+
+        <div class="row">
+
+
+        <div class="actions">
+          <button id="btnGpa" type="button" class="primary">Calculate GPA</button>
+          <button id="resetBtn" type="button" class="secondary">Reset</button>
+        </div>
+
+        <div
+          id="error"
+          class="error"
+          role="alert"
+          aria-live="polite"
+          hidden>
+        </div>
+
+      </section>
+
+      <!-- ===================== RESULTS ===================== -->
+
+      <section class="card" aria-labelledby="results-title" id="Results">
+
+        <h2 id="results-title">Results</h2>
+
+        <div class="result" aria-live="polite">
+
+          <div class="resultTop">
+            <h3 class="minihead">Estimated US GPA</h3>
+
+            <div class="chips">
+              <span class="chip" id="methodChip" hidden></span>
+              <span class="chip" id="strictChip" hidden></span>
+            </div>
+          </div>
+
+          <div class="big" id="gpaOut">—</div>
+          <div class="muted">Estimated US GPA (out of 4.0)</div>
+
+          <div class="resultActions">
+            <button id="copyBtn" type="button" class="secondary">Copy report</button>
+            <button id="shareBtn" type="button" class="secondary">Copy page link</button>
+          </div>
+
+        </div>
+
+        <div class="result" aria-live="polite">
+
+          <div class="resultTop">
+            <h3 class="minihead">Application readiness check</h3>
+          </div>
+
+          <label for="field">Field</label>
+          <select id="field">
+            <option value="engineering">Engineering</option>
+            <option value="cs" selected>Computer Science / IT</option>
+            <option value="data">Data Science / Analytics</option>
+            <option value="ai">AI / Machine Learning</option>
+            <option value="cyber">Cybersecurity</option>
+            <option value="business">Business / Management</option>
+            <option value="mba">MBA</option>
+            <option value="finance">Finance / FinTech</option>
+            <option value="healthcare">Healthcare (Medicine/Nursing/Public Health)</option>
+            <option value="biotech">Biotech / Bioinformatics</option>
+            <option value="other">Other (general)</option>
+          </select>
+
+          <label for="targetTier">Target tier</label>
+          <select id="targetTier">
+            <option value="top">Top (very selective)</option>
+            <option value="strong" selected>Strong (competitive)</option>
+            <option value="safe">Safe (less selective)</option>
+          </select>
+
+          <div class="row">
+
+            <div>
+              <label for="projects">Projects</label>
+              <select id="projects">
+                <option value="0" selected>Basic</option>
+                <option value="1">Good</option>
+                <option value="2">Strong (deployed / real users)</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="experience">Experience</label>
+              <select id="experience">
+                <option value="0" selected>None</option>
+                <option value="1">Internship / part time</option>
+                <option value="2">Relevant full time / research</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div class="row">
+
+            <div>
+              <label for="research">Research</label>
+              <select id="research">
+                <option value="0" selected>None</option>
+                <option value="1">Some (assistant / project)</option>
+                <option value="2">Publication / strong output</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="lors">Recommendations</label>
+              <select id="lors">
+                <option value="0" selected>Okay</option>
+                <option value="1">Strong</option>
+                <option value="2">Very strong (research/HoD)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div id="fieldExtras" class="faq">
+            <div id="fieldExtrasInner">
+              <!-- JS renders field specific checkboxes here -->
+            </div>
+          </div>
+
+          <div class="faq">
+
+            <div class="actions readinessActions">
+              <button id="btnReady" type="button" class="primary">Analyse readiness</button>
+              <button id="resetReadyBtn" type="button" class="secondary">Reset readiness</button>
+            </div>
+
+            <p class="muted" id="signalText">
+              Fill inputs and hit Analyse readiness.
+            </p>
+
+            <div class="row">
+
+              <div>
+                <p class="muted">
+                  <strong>Quick fixes (2 to 4 weeks)</strong>
+                </p>
+                <ul id="quickFixes"></ul>
+              </div>
+
+              <div>
+                <p class="muted">
+                  <strong>Big moves (8 to 12 weeks)</strong>
+                </p>
+                <ul id="bigMoves"></ul>
+              </div>
+
+            </div>
+
+          </div>
+
+          <p class="hint">
+            This is a readiness signal, not a guarantee.
+            It is meant to be practical and honest.
+          </p>
+
+        </div>
+
+      </section>
+
+      <!-- ===================== INFO ===================== -->
+
+      <section class="card" id="About">
+        <h2>What this tool is (and isn’t)</h2>
+        <p>
+          This tool gives a <strong>practical estimate</strong> and a
+          <strong>readiness check</strong>.
+          It helps you sanity check your profile and decide what to improve next.
+        </p>
+        <p class="muted">
+          It is <strong>not</strong> an official credential evaluation.
+        </p>
+      </section>
+
+      <section class="card" id="FAQ">
+        <h2>FAQ</h2>
+
+        <details class="faq">
+          <summary>How do US universities convert Indian percentage to GPA?</summary>
+          <p class="muted">
+            There is no universal formula. Some universities evaluate transcripts internally,
+            while others rely on credential evaluation agencies.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Is 70% in India equal to 3.5 GPA in the US?</summary>
+          <p class="muted">
+            Not exactly. Interpretation depends on grading distribution and institution.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Does WES use the same GPA conversion?</summary>
+          <p class="muted">
+            No. Credential evaluators may use proprietary institutional formulas.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Is CGPA treated differently from percentage?</summary>
+          <p class="muted">
+            Yes. Always use the primary metric on your official transcript.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What GPA is competitive for top US programs?</summary>
+          <p class="muted">
+            Equivalent of 3.6+ is typically competitive,
+            but research, projects, and recommendations matter heavily.
+          </p>
+        </details>
+
+                <details class="faq">
+          <summary>Should I enter CGPA or percentage if I have both?</summary>
+          <p class="muted">
+            Use the primary number your official transcript emphasizes. If both appear, pick the one most consistently used across semesters.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Does a 3-year Indian degree affect US admissions?</summary>
+          <p class="muted">
+            Some US programs accept 3-year degrees, some prefer 4-year. Always check the specific program’s eligibility rules.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Do backlogs or repeats matter as much as GPA?</summary>
+          <p class="muted">
+            They can matter, but context matters. Strong improvement, solid projects, and strong recommendations can reduce the impact.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Why can WES/ECE conversions differ from this tool?</summary>
+          <p class="muted">
+            Credential evaluators may use institution-specific rules, grade distributions, and proprietary methods. This tool is an estimate for planning.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Does a 4.0 here mean I’m guaranteed admission?</summary>
+          <p class="muted">
+            No. A high GPA helps, but admissions depends on your full profile: projects, research, experience, SOP, and fit with the program.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What’s a “good” GPA for MSCS / Data Science / AI in the US?</summary>
+          <p class="muted">
+            For highly selective programs, 3.6+ is often competitive, but strong projects and research can be just as important depending on the program.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>How important are projects compared to GPA for CS?</summary>
+          <p class="muted">
+            Projects can be a major differentiator. A strong, deployed project with clear impact can significantly strengthen an application.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Should I include MOOCs and certifications?</summary>
+          <p class="muted">
+            They help most when they support a real project. Use them to fill gaps, then show proof through work (GitHub, reports, deployments).
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Do US universities still require the GRE?</summary>
+          <p class="muted">
+            Many programs are test-optional. Some still recommend it for certain applicants. Check each program page directly.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Do IELTS/TOEFL requirements depend on my university language?</summary>
+          <p class="muted">
+            Often yes, but policies vary by school. Some waive English tests if your prior degree was taught in English and documented officially.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>What if my GPA estimate is low. Should I still apply?</summary>
+          <p class="muted">
+            Yes, but apply strategically: broaden your list, strengthen projects, write a strong SOP, and use recommendations that vouch for your ability.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>How should I use the readiness score on this page?</summary>
+          <p class="muted">
+            Treat it like a checklist signal. Use the “Quick fixes” and “Big moves” to decide what to improve next before submitting applications.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Why does this tool use “smooth bands” instead of one formula?</summary>
+          <p class="muted">
+            Because real evaluations don’t have one universal rule. Smooth bands avoid unrealistic jumps at cutoffs and give a more stable estimate.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Is this tool only for Computer Science?</summary>
+          <p class="muted">
+            No. The GPA estimate is general. The readiness checklist adapts based on the field you choose.
+          </p>
+        </details>
+
+        <details class="faq">
+          <summary>Is the readiness score an “admission probability”?</summary>
+          <p class="muted">
+            No. It’s a practical signal to guide improvement, not a prediction or guarantee.
+          </p>
+        </details>
+
+      </section>
+
+      <section class="card" id="ImpNotes">
+        <h2>Important notes</h2>
+
+        <ul>
+          <li><strong>Estimates only:</strong> no universal rule exists.</li>
+          <li><strong>Context matters:</strong> grading culture changes interpretation.</li>
+          <li><strong>No guarantees:</strong> this does not predict outcomes.</li>
+        </ul>
+
+        <p class="muted">
+          If you’re applying from the UK, check out my
+          <a href="https://rudra-build.github.io/uk-grade-mscs-usa/" target="_blank" rel="noopener noreferrer">
+            <strong>UK → US GPA + competitiveness tool</strong>
+          </a> for Computer Science students.
+        </p>
+
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <p class="muted">
+        Free tool for students applying to US Master's programs.
+        Vanilla HTML/CSS/JS · No tracking · Transparent logic
+      </p>
+    </footer>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
